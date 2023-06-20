@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <View style={styles.container}>
 
-        <Text> {`${days[date.getDay()]} ${date.getDate()} ${month[date.getMonth()] } ${[date.getFullYear()] } `} </Text>
+        <Text style={styles.date}> {`${days[date.getDay()]} ${date.getDate()} ${month[date.getMonth()] } ${[date.getFullYear()] } `} </Text>
     </View>
     // <Text> {Date.now().toString()} </Text>
   )

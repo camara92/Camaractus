@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, StyleSheet, View, TextInput, FlatList } from 'react-native'
+import { Text, StyleSheet, View, TextInput, FlatList, Pressable } from 'react-native'
 import Header from '../../components/Header'
 import { TaskTile } from './TaskTile';
 import TaskForm from './TaskForm';
@@ -7,9 +7,8 @@ import TaskForm from './TaskForm';
 export default function TaskScreen() {
     // List des tâches 
     // State pour garder en memoire les tâches : 
-    const [tasks, SetTasks] = useState([
-
-    ]);
+    const [tasks, SetTasks] = useState([]);
+    const [IsFormVisible, SetIsFormVisible] = useState(false);
     const renderItem = ({ item }) => {
         return (
             <TaskTile task={item} onUpdateTask={onUpdateTask} DeleteTask={onDeleteTask} />
@@ -57,14 +56,20 @@ export default function TaskScreen() {
 
         SetTasks(newTasks)
     }
+
+    // ajouter un button fottant => style position : absolute 
+    // callback :=> rendu cond taskform
+    const _toggleForm =()=>{
+        SetIsFormVisible(!IsFormVisible);
+    }
     return (
-        <View>
+        <>
 
             <FlatList
                 ListHeaderComponent={
                     <>
                         <Header />
-                        <TaskForm onAddTask={onAddTask} />
+                      { IsFormVisible &&  <TaskForm onAddTask={onAddTask} />}
                     </>
                 }
                 contentContainerStyle={{ flexGrow: 1, }}
@@ -72,7 +77,25 @@ export default function TaskScreen() {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={renderItem}
             />
-        </View>
+            <Pressable  onPress={ _toggleForm } style= {styles.btn} >
+                <Text> {IsFormVisible ? "x": "+"} </Text>
+            </Pressable>
+        </>
+        
     );
 }
 
+const styles = StyleSheet.create({
+ btn: {
+    position:"absolute",
+    right: 20,
+    padding:15,
+    bottom: -120,
+    backgroundColor: "orange",
+    fontSize: 20
+
+ },
+
+
+    
+    })

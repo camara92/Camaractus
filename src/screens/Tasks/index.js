@@ -7,22 +7,17 @@ import TaskForm from './TaskForm';
 export default function TaskScreen() {
     // List des tâches 
     // State pour garder en memoire les tâches : 
-    const [tasks, SetTask] = useState([
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
+    const [tasks, SetTasks] = useState([
      
     ]);
 const renderItem = ({item})=>{
     return(
-    <TaskTile task= {item} />
+    <TaskTile task= {item} onUpdateTask = {onUpdateTask} />
     )
 }
     // ajouter une fonction pour une tâche au state 
     const onAddTask = (title)=>{
-        SetTask([...tasks, {
+        SetTasks([...tasks, {
             id: Date.now(),
             title,
              isCompleted: false
@@ -31,7 +26,24 @@ const renderItem = ({item})=>{
     }
     // 2* Task counter => props é title 
     // TaskList : retourner les flatlist où il y a la liste des tâches 
+    const onUpdateTask =(id)=>{
+        let newTasks = []
+        tasks.forEach(t=>{
+            if(t.id==id){
+                newTasks.push(t)
+                return;
+            }
+                newTasks.push({
+                    id, 
+                    title: "Tâche ajoutée avec success", 
+                    // title: t.title, 
+                    isCompleted: !t.isCompleted
+                })
+            
+        })
 
+        SetTasks(newTasks)
+    }
     return (
         <View>
            

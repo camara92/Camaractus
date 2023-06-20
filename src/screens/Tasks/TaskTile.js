@@ -1,9 +1,10 @@
 import { Text, View, Image, StyleSheet, Pressable } from 'react-native'
 import React, { Component } from 'react'
 
-export function TaskTile ({task}) {
+export function TaskTile ({task, onUpdateTask}) {
   const onchangeStatus = ()=>{
-    alert("Voir le status de la tâche ")
+    onUpdateTask(task.id)
+    
   }
   const onDeleteTask = ()=>{
     alert("Supprimer la tâche  ")

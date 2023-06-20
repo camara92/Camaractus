@@ -1,22 +1,33 @@
-import { Text, View, Image, StyleSheet } from 'react-native'
+import { Text, View, Image, StyleSheet, Pressable } from 'react-native'
 import React, { Component } from 'react'
 
 export function TaskTile ({task}) {
+  const onchangeStatus = ()=>{
+    alert("Voir le status de la tâche ")
+  }
+  const onDeleteTask = ()=>{
+    alert("Supprimer la tâche  ")
 
+  }
     return (
       <View style={styles.container}>
 
-          <View style={styles.subContainer}>
+          <Pressable 
+          onPress={onchangeStatus}
+          style={styles.subContainer}>
         <Image
         style={styles.check}
         source={require('../../../assets/icons/circle.png')}
       />
         <Text style = {styles.title }> {task.title} </Text>
-        </View>
+        </Pressable>
+        <Pressable 
+          onPress={onDeleteTask}>
         <Image
         style={styles.check}
         source={require('../../../assets/icons/delete.png')}
       />
+      </Pressable>
       </View>
     )
   

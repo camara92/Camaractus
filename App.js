@@ -16,7 +16,7 @@ const App = ({children, title })=>{
 const styles = StyleSheet.create({
 SafeContainer : {
   // flex:1,
-  backgroundColor : "red", 
+  // backgroundColor : "red", 
 
 }
 })

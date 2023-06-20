@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Text, StyleSheet, View, TextInput, FlatList } from 'react-native'
 import Header from '../../components/Header'
+import { TaskTile } from './TaskTile';
 
 export default function TaskScreen() {
     // List des tâches 
@@ -19,7 +20,7 @@ export default function TaskScreen() {
     ]);
 const renderItem = ({item})=>{
     return(
-    <Text> {item.title} </Text>
+    <TaskTile task= {item} />
     )
 }
     // 2* Task counter => props é title 

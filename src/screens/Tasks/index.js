@@ -8,56 +8,69 @@ export default function TaskScreen() {
     // List des tâches 
     // State pour garder en memoire les tâches : 
     const [tasks, SetTasks] = useState([
-     
+
     ]);
-const renderItem = ({item})=>{
-    return(
-    <TaskTile task= {item} onUpdateTask = {onUpdateTask} />
-    )
-}
+    const renderItem = ({ item }) => {
+        return (
+            <TaskTile task={item} onUpdateTask={onUpdateTask} DeleteTask={onDeleteTask} />
+        )
+    }
     // ajouter une fonction pour une tâche au state 
-    const onAddTask = (title)=>{
+    const onAddTask = (title) => {
         SetTasks([...tasks, {
             id: Date.now(),
             title,
-             isCompleted: false
+            isCompleted: false
 
         }])
     }
     // 2* Task counter => props é title 
     // TaskList : retourner les flatlist où il y a la liste des tâches 
-    const onUpdateTask =(id)=>{
+    const onDeleteTask = (id) => {
         let newTasks = []
-        tasks.forEach(t=>{
-            if(t.id==id){
+        tasks.forEach(t => {
+            if (t.id !== id) {
                 newTasks.push(t)
                 return;
             }
-                newTasks.push({
-                    id, 
-                    title: "Tâche ajoutée avec success", 
-                    // title: t.title, 
-                    isCompleted: !t.isCompleted
-                })
-            
+
+
+        })
+
+        SetTasks(newTasks)
+    }
+    const onUpdateTask = (id) => {
+        let newTasks = []
+        tasks.forEach(t => {
+            if (t.id !== id) {
+                newTasks.push(t)
+                return;
+            }
+            newTasks.push({
+                id,
+                // title: "Tâche ajoutée avec success", 
+                title: t.title,
+                isCompleted: !t.isCompleted
+            })
+
         })
 
         SetTasks(newTasks)
     }
     return (
         <View>
-           
+
             <FlatList
-                ListHeaderComponent = {
-                <>
-                <Header/>
-                <TaskForm onAddTask= { onAddTask } />
-                </>
+                ListHeaderComponent={
+                    <>
+                        <Header />
+                        <TaskForm onAddTask={onAddTask} />
+                    </>
                 }
-                contentContainerStyle= {{flexGrow:1, }}
-                data = {tasks}
-                keyExtractor = {(item, index)=> index.toString()}
-                renderItem = {renderItem}
+                contentContainerStyle={{ flexGrow: 1, }}
+                data={tasks}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={renderItem}
             />
         </View>
     );

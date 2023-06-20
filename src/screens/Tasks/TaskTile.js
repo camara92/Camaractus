@@ -1,13 +1,15 @@
 import { Text, View, Image, StyleSheet, Pressable } from 'react-native'
 import React, { Component } from 'react'
 
-export function TaskTile ({task, onUpdateTask}) {
+export function TaskTile ({task, onUpdateTask, DeleteTask}) {
   const onchangeStatus = ()=>{
     onUpdateTask(task.id)
     
   }
-  const onDeleteTask = ()=>{
-    alert("Supprimer la tâche  ")
+  const _onDeleteTask = ()=>{
+    // alert("Supprimer la tâche  ")
+
+    DeleteTask(task.id)
 
   }
     return (
@@ -18,12 +20,12 @@ export function TaskTile ({task, onUpdateTask}) {
           style={styles.subContainer}>
         <Image
         style={styles.check}
-        source={require('../../../assets/icons/circle.png')}
+        source={ task.isCompleted ? require('../../../assets/icons/check_circle.png') : require('../../../assets/icons/circle.png')}
       />
         <Text style = {styles.title }> {task.title} </Text>
         </Pressable>
         <Pressable 
-          onPress={onDeleteTask}>
+          onPress={_onDeleteTask}>
         <Image
         style={styles.check}
         source={require('../../../assets/icons/delete.png')}

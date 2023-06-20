@@ -13,118 +13,22 @@ export default function TaskScreen() {
             title: "Hello Wordl",
             isCompleted: false,
         }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-         
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-         
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-        {
-            id: 1,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }, 
-      
-        
-       
+     
     ]);
 const renderItem = ({item})=>{
     return(
     <TaskTile task= {item} />
     )
 }
+    // ajouter une fonction pour une tâche au state 
+    const onAddTask = (title)=>{
+        SetTask([...tasks, {
+            id: Date.now(),
+            title,
+             isCompleted: false
+
+        }])
+    }
     // 2* Task counter => props é title 
     // TaskList : retourner les flatlist où il y a la liste des tâches 
 
@@ -135,7 +39,7 @@ const renderItem = ({item})=>{
                 ListHeaderComponent = {
                 <>
                 <Header/>
-                <TaskForm />
+                <TaskForm onAddTask= { onAddTask } />
                 </>
                 }
                 contentContainerStyle= {{flexGrow:1, }}

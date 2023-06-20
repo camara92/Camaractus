@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Text, StyleSheet, View, TextInput, FlatList } from 'react-native'
 import Header from '../../components/Header'
 import { TaskTile } from './TaskTile';
+import TaskForm from './TaskForm';
 
 export default function TaskScreen() {
     // List des tâches 
@@ -12,6 +13,111 @@ export default function TaskScreen() {
             title: "Hello Wordl",
             isCompleted: false,
         }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+         
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+         
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+        {
+            id: 1,
+            title: "Hello Wordl",
+            isCompleted: false,
+        }, 
+      
+        
        
     ]);
 const renderItem = ({item})=>{
@@ -26,7 +132,12 @@ const renderItem = ({item})=>{
         <View>
            
             <FlatList
-                ListHeaderComponent = {<Header/>}
+                ListHeaderComponent = {
+                <>
+                <Header/>
+                <TaskForm />
+                </>
+                }
                 contentContainerStyle= {{flexGrow:1, }}
                 data = {tasks}
                 keyExtractor = {(item, index)=> index.toString()}

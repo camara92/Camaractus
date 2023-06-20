@@ -12,11 +12,7 @@ export default function TaskScreen() {
             title: "Hello Wordl",
             isCompleted: false,
         }, 
-        {
-            id: 2,
-            title: "Hello Wordl",
-            isCompleted: false,
-        }
+       
     ]);
 const renderItem = ({item})=>{
     return(

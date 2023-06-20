@@ -4,12 +4,15 @@ import React, { Component } from 'react'
 export function TaskTile ({task}) {
 
     return (
-      <View>
+      <View style={styles.container}>
+
+          <View style={styles.subContainer}>
         <Image
         style={styles.check}
         source={require('../../../assets/icons/circle.png')}
       />
-        <Text> {task.title} </Text>
+        <Text style = {styles.title }> {task.title} </Text>
+        </View>
         <Image
         style={styles.check}
         source={require('../../../assets/icons/delete.png')}
@@ -22,10 +25,28 @@ export function TaskTile ({task}) {
 
 
 const styles = StyleSheet.create({
-  check: {
-    width: 56,
-    height:56,
+    container: {
+        flexDirection: "row", 
+        alignItems: "center", 
+        padding: 10, 
+        justifyContent: "space-between", 
+        
+    },
+    check: {
+        width: 26,
+        height:26,
+        
+    }, 
+    subContainer:{
+        flexDirection: "row",
+      alignItems: "center", 
+   
 
+  }
+  , title:{
+    marginLeft: 20,
+    fontSize:16,
+    
   }
     
     })
